@@ -10,13 +10,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gcc -o jobb1 main.c'  // Kompilera main.c
+                // Ändra filnamnet till något annat än "jobb1"
+                sh 'gcc -o jobb1_executable main.c'  // Kompilera main.c 
             }
         }
 
         stage('Test') {
             steps {
-                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera
+                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera 
                 sh './test_jobb1'
             }
         }
