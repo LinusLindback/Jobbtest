@@ -10,13 +10,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gcc -o jobb1 jobb1.c'  // Kompilera jobb1.c
+                sh 'gcc -o jobb1 main.c'  // Kompilera main.c
             }
         }
 
         stage('Test') {
             steps {
-                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera och kör tester
+                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera 
+och kör tester
                 sh './test_jobb1'
             }
         }
