@@ -7,17 +7,22 @@ pipeline {
                 checkout scm
             }
         }
+
         stage('Build') {
             steps {
-                sh 'make build'
+                sh 'gcc -o jobb1 jobb1.c'  // Kompilera jobb1.c
             }
         }
+
         stage('Test') {
             steps {
-                sh 'make test'
+                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera 
+och kör tester
+                sh './test_jobb1'
             }
         }
     }
+
     post {
         always {
             echo 'Pipeline finished'
@@ -30,3 +35,4 @@ pipeline {
         }
     }
 }
+
