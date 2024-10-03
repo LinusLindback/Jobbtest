@@ -16,8 +16,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera 
-och kör tester
+                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera och kör tester
                 sh './test_jobb1'
             }
         }
