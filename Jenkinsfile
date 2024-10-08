@@ -2,23 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                // Ändra filnamnet till något annat än "jobb1"
-                sh 'gcc -o jobb1_executable main.c'  // Kompilera main.c 
+                // Kompilera main.c till en körbar fil kallad "hello"
+                sh 'gcc -o hello main.c'
             }
         }
 
-        stage('Test') {
+        stage('Run') {
             steps {
-                sh 'gcc -o test_jobb1 test_jobb1.c -lcunit'  // Kompilera 
-                sh './test_jobb1'
+                // Kör den kompilerade filen "hello"
+                sh './hello'
             }
         }
     }
@@ -28,10 +22,10 @@ pipeline {
             echo 'Pipeline finished'
         }
         success {
-            echo 'Build and tests succeeded'
+            echo 'Build and run succeeded'
         }
         failure {
-            echo 'Build or tests failed'
+            echo 'Build or run failed'
         }
     }
 }
